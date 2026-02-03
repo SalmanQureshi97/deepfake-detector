@@ -1,0 +1,32 @@
+ALL:
+20/20 [==============================] - 90s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 0.9990 - encoder_categorical_accuracy: 0.9700
+
+ENCODER encodec24:
+20/20 [==============================] - 82s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 0.9990 - encoder_categorical_accuracy: 0.9610
+
+ENCODER encodec3:
+20/20 [==============================] - 89s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 0.9650
+
+ENCODER encodec6:
+20/20 [==============================] - 81s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 0.9020
+
+ENCODER griffin256:
+20/20 [==============================] - 94s 5s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 0.9990
+
+ENCODER griffin512:
+20/20 [==============================] - 78s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 0.9990
+
+ENCODER lac14:
+20/20 [==============================] - 84s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 0.9980 - encoder_categorical_accuracy: 0.8550
+
+ENCODER lac2:
+20/20 [==============================] - 77s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 0.9950 - encoder_categorical_accuracy: 0.9830
+
+ENCODER lac7:
+20/20 [==============================] - 86s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 0.9970 - encoder_categorical_accuracy: 0.7410
+
+ENCODER musika:
+20/20 [==============================] - 80s 4s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 1.0000
+
+REAL:
+20/20 [==============================] - 101s 5s/step - loss: 0.0000e+00 - deepfake_binary_accuracy: 1.0000 - encoder_categorical_accuracy: 1.0000

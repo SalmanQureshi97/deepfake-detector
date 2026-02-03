@@ -1,4 +1,29 @@
 # AI-music detection study
+
+## Note about this fork and reproduced results
+
+This repository is a **personal fork** of Deezer's `deepfake-detector` used for my own reproducibility experiments and for training new weights.
+
+- **Why this fork exists**: while trying to reproduce the results from the paper *“AI-Generated Music Detection and its Challenges”*, I needed to (a) fix several reproducibility issues in the original codebase and (b) adapt the Musika autoencoder pipeline. The main technical changes I contributed upstream are:
+  - Refactoring the Musika `encode_audio` pipeline and adding SavedModel support, as well as evaluation fixes ([commit `edc94ad`](https://github.com/deezer/deepfake-detector/commit/edc94ad04b721e4ba59ccfb25e14606ddaa4a78a)).
+  - Reproducibility and path fixes, including consistent dataset paths, mono-to-stereo handling, and updated dataset creation scripts ([commit `53257d2`](https://github.com/deezer/deepfake-detector/commit/53257d2bdd7425578740060704a17eed99c195f1)).
+  These changes have been merged into the **upstream** Deezer repository; this fork keeps them together with my own trained weights and logs.
+
+- **New weights and logs in this fork**: I retrained the main `specnn_amplitude` detector using the updated code, and added the resulting SavedModel under `weights/final/specnn_amplitude/`. The evaluation outputs are saved in:
+  - `results.txt`: initial evaluation runs with the original weights / configuration.
+  - `results_after_retraining.txt`: evaluation after retraining with the updated setup.
+
+- **Discrepancies w.r.t. the published numbers**: even after applying the official reproducibility fixes and retraining,
+  the metrics reported in these text files do **not exactly match** all values published in the paper (e.g., some per-encoder accuracies diverge, and my first runs were noticeably below the reported scores before retraining improved them to be much closer to 99–100% on several encoders).
+
+In short, this fork:
+- Keeps the original research code,
+- Incorporates my upstream reproducibility contributions,
+- Adds my **own trained weights and evaluation logs** for transparency,
+- But should **not** be read as an exact replica of the experimental setup that produced the tables in the paper.
+
+---
+
 Code repository of our research paper on AI-generated music detection ["AI-Generated Music Detection and its Challenges"](https://arxiv.org/pdf/2501.10111) - D. Afchar, G. Meseguer Brocal, R. Hennequin (accepted for IEEE ICASSP 2025).
 
 We create an AI-music detector by detecting the use of an artificial decoder (e.g., a neural decoder). For that, we auto-encode a dataset of music with several such auto-encoders to train on. This setting enables us to avoid detecting confounding artefacts. For instance, if a dataset of artificial music only contains pop music, you don't want to inadvertently train a pop music detector. Here, the task is to distinguish real music from its reconstructed counterpart. With the same musical content and compression setting, only the autoencoder artefacts remain. We also verify that merely training on autoencoder allows the model to detect music fully-generated from prompts (i.e., not auto-encoded).
